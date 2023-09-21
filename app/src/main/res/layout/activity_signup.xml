@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".Signup">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/logo_fpoly" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:textColor="@color/red"
+        android:text="Đăng Ký"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:drawableStart="@drawable/ic_email"
+        android:hint="\t Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:hint="\t Password"
+        android:drawableStart="@drawable/ic_lock"
+        android:inputType="textPassword"/>
+    <EditText
+        android:id="@+id/passwordagain"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:hint="\t Password again"
+        android:drawableStart="@drawable/ic_lock"
+        android:inputType="textPassword"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:textSize="10sp"
+            android:text="Tôi đồng ý với các điều khoản"/>
+        <TextView
+            android:id="@+id/buttonLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/red"
+            android:text="Đăng Nhập"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onLoginButtonClick"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/red"
+        android:textAllCaps="true"
+        android:text="Đăng Ký"/>
+
+<!--    <RadioGroup-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Nam"/>-->
+<!--        <RadioButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Nữ"/>-->
+<!--    </RadioGroup>-->
+
+</LinearLayout>

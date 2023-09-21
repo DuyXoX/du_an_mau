@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="40sp"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:text="Chào Mừng"/>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/logo_fpoly"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/red"
+        android:text="Đăng nhập" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:text="Đăng ký" />
+
+</LinearLayout>
