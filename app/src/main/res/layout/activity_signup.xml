@@ -26,21 +26,21 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:drawableStart="@drawable/ic_email"
-        android:hint="\t Email"
+        android:hint="\t Tên đăng nhập"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:hint="\t Password"
+        android:hint="\t Mật khẩu"
         android:drawableStart="@drawable/ic_lock"
         android:inputType="textPassword"/>
     <EditText
         android:id="@+id/passwordagain"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:hint="\t Password again"
+        android:hint="\t Nhập lại mật khẩu"
         android:drawableStart="@drawable/ic_lock"
         android:inputType="textPassword"/>
 
@@ -67,24 +67,22 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_signup"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:backgroundTint="@color/red"
         android:textAllCaps="true"
         android:text="Đăng Ký"/>
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:textAllCaps="true"
+        android:text="Test"/>
 
-<!--    <RadioGroup-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
-<!--        <RadioButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Nam"/>-->
-<!--        <RadioButton-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Nữ"/>-->
-<!--    </RadioGroup>-->
+
+
 
 </LinearLayout>

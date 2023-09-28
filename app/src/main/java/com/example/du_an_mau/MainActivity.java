@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button buttonGoToB = findViewById(R.id.buttonLogin);
         Button buttonRegister = findViewById(R.id.buttonRegister);
+        Button btn_test = findViewById(R.id.btn_test);
 
         buttonGoToB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
                 // Tạo Intent để chuyển đến màn hình B
                 Intent intent = new Intent(MainActivity.this, Signup.class);
                 startActivity(intent); // Bắt đầu Activity B
+            }
+        });
+
+        btn_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Test.class);
+                startActivity(intent);
             }
         });
 

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Test">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/radio_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nam"/>
+            <RadioButton
+                android:id="@+id/radio_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nữ"/>
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/test"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:hint="Test"
+            android:text=""/>
+
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="Test" />
+
+        <Button
+            android:id="@+id/truyenDulieu"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="Truyền dử liệu" />
+
+        <Button
+            android:id="@+id/moWeb"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="Mở Website"/>
+
+        <Button
+            android:id="@+id/goiDien"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="Gọi điện"/>
+
+        <Button
+            android:id="@+id/guiTinnhan"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:text="Gửi tin nhắn"/>
+
+<!--        <ListView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textAlignment="center"/>-->
+        <Button
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/red"
+            android:text="1"/>
+        <Button
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:backgroundTint="#F68103"
+            android:text="2"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:backgroundTint="#89FF00"
+            android:text="2"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:backgroundTint="#00FF99"
+            android:text="2"/>
+    </LinearLayout>
+
+</ScrollView>

@@ -24,14 +24,14 @@
         android:id="@+id/username"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:hint="\t Email"
+        android:hint="\t Tên đăng nhập"
         android:drawableStart="@drawable/ic_email"
         android:inputType="textEmailAddress"/>
     <EditText
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:hint="\t Password"
+        android:hint="\t Mật khẩu"
         android:drawableStart="@drawable/ic_lock"
         android:inputType="textPassword"/>
     <LinearLayout
@@ -55,16 +55,18 @@
             android:onClick="onSignupButtonClick" />
 
     </LinearLayout>
+
     <Button
+        android:id="@+id/btnLogin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/red"
-        android:textAllCaps="true"
-        android:text="Đăng Nhập"/>
+        android:text="Đăng Nhập"
+        android:textAllCaps="true" />
 
 
-<!--    <ProgressBar-->
+    <!--    <ProgressBar-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"/>-->
 </LinearLayout>
