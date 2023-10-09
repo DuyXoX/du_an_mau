@@ -29,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //Database mau loai sach
 //        db.execSQL("INSERT INTO LOAISACH VALUES(1, 'Chi Dau')"); // Bat buot phai nhap day du du lieu
-        db.execSQL("INSERT INTO LOAISACH(maloai, tenloai) VALUES(1, 'Chi Dau'), (2, 'Thang Teo'), (3, 'Cay Khe')"); // Khong buot phai nhap day du du lieu
+        db.execSQL("INSERT INTO LOAISACH(maloai, tenloai) VALUES(1, 'Khoa Học'), (2, 'Thiên Văn'), (3, 'Tiểu Thuyết')"); // Khong buot phai nhap day du du lieu
         db.execSQL("INSERT INTO SACH(masach, tensach, tacgia, giaban, maloai) VALUES(1, 'Sach 1', 'Tac Gia 1', 10000, 1), (2, 'Sach 2', 'Tac Gia 2', 15000, 2), (3, 'Sach 3', 'Tac Gia 3', 20000, 3)");
         db.execSQL("INSERT INTO NGUOIDUNG(tennd, sdt, diachi, tendangnhap, matkhau, role) VALUES('Người Dùng 1', '1234567890', 'Địa Chỉ 1', 'user1', 'password1', 3), ('Thủ Thư 1', '9876543210', 'Địa Chỉ 2', 'librarian1', 'password2', 2), ('Admin', '5555555555', 'Địa Chỉ 3', 'admin', 'admin', 1)");
         db.execSQL("INSERT INTO PHIEUMUON(ngaymuon, ngaytra, mand) VALUES('2023-09-15', '2023-09-30', 1), ('2023-09-16', '2023-09-28', 2), ('2023-09-17', '2023-09-25', 3)");

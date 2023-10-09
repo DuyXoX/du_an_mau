@@ -49,6 +49,8 @@ public class Login extends AppCompatActivity {
 
                 if (check) {
                     Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Login.this, Home.class); // Thay B.class bằng tên Activity B
+                    startActivity(intent);
                 } else {
                     Toast.makeText(Login.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                 }
