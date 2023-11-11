@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TheLoaiSach">
+    tools:context=".TheLoaiSach"
+    android:id="@+id/relativeLoaiSach">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewThuVienSach"
+        android:id="@+id/recyclerViewTheVienSach"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

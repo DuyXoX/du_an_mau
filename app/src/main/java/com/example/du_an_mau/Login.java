@@ -11,10 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.du_an_mau.DAO.NguoiDungDAO;
+import com.example.du_an_mau.DAO.PhieuMuonDAO;
 import com.example.du_an_mau.Database.DBHelper;
 
 public class Login extends AppCompatActivity {
     private NguoiDungDAO nguoiDungDAO;
+    private PhieuMuonDAO phieuMuonDAO;
     private EditText usernameEditText, passwordEditText;
 
     @Override
@@ -23,6 +25,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         nguoiDungDAO = new NguoiDungDAO(this);
+        phieuMuonDAO = new PhieuMuonDAO(this);
 
         usernameEditText = findViewById(R.id.username);
         passwordEditText = findViewById(R.id.password);

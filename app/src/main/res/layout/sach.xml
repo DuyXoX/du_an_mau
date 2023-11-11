@@ -20,16 +20,31 @@
             android:textSize="20sp"
             android:textAllCaps="true"
             android:textStyle="bold"
-            android:text="Thêm loại sách mới"/>
-<!--        <EditText-->
-<!--            android:id="@+id/maLoai"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="48dp"-->
-<!--            android:padding="5dp"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:hint="Nhập mã loại sách"/>-->
+            android:text="Thêm sách mới"/>
         <EditText
-            android:id="@+id/tenLoaiSach"
+            android:id="@+id/tenSach"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_height="48dp"
+            android:hint="Nhập tên sách"/>
+        <EditText
+            android:id="@+id/tenTacGia"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_height="48dp"
+            android:hint="Nhập tên tác giả"/>
+        <EditText
+            android:id="@+id/giaBan"
+            android:layout_width="match_parent"
+            android:inputType="number"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_height="48dp"
+            android:hint="Nhập giá bán"/>
+        <EditText
+            android:id="@+id/tenLoai"
             android:layout_width="match_parent"
             android:padding="5dp"
             android:layout_margin="10dp"
@@ -63,6 +78,5 @@
                 android:textAllCaps="true" />
         </LinearLayout>
     </LinearLayout>
-
 
 </androidx.cardview.widget.CardView>

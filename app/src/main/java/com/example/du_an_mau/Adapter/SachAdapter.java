@@ -19,37 +19,40 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.du_an_mau.DAO.LoaiSachDAO;
-import com.example.du_an_mau.Models.LoaiSach;
+import com.example.du_an_mau.DAO.ThuVienSachDAO;
+import com.example.du_an_mau.Models.Sach;
 import com.example.du_an_mau.R;
-import com.example.du_an_mau.TheLoaiSach;
+import com.example.du_an_mau.ThuVienSach;
 
 import java.util.ArrayList;
 
-public class LoaiSachAdapter extends RecyclerView.Adapter<LoaiSachAdapter.ViewHolder> {
+public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<LoaiSach> list;
-    private LoaiSachDAO loaiSachDAO;
+    private ArrayList<Sach> list;
+    private ThuVienSachDAO thuVienSachDAO;
 
-    public LoaiSachAdapter(Context context, ArrayList<LoaiSach> list, LoaiSachDAO loaiSachDAO) {
+    public SachAdapter(Context context, ArrayList<Sach> list, ThuVienSachDAO thuVienSachDAO) {
         this.context = context;
         this.list = list;
-        this.loaiSachDAO = loaiSachDAO;
+        this.thuVienSachDAO = thuVienSachDAO;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater =((Activity)context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_the_loai_sach, parent, false);
+        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        View view = inflater.inflate(R.layout.item_thu_vien_sach, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SachAdapter.ViewHolder holder, int position) {
         //Truyền dữ liệu vào
-        holder.maLoai.setText("Mã Loại: " + list.get(position).getMaloai());
-        holder.tenLoaiSach.setText(list.get(position).getTenloai());
+        holder.maSach.setText("Mã sách: " + list.get(position).getMasach());
+        holder.tenSach.setText(list.get(position).getTensach());
+        holder.tenTacGia.setText(list.get(position).getTacgia());
+        holder.giaBan.setText("Giá bán: " + list.get(position).getGiaban());
+        holder.tenLoai.setText("Tên loại: " + list.get(position).getTenloai());
 
         holder.btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,16 +65,13 @@ public class LoaiSachAdapter extends RecyclerView.Adapter<LoaiSachAdapter.ViewHo
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Thông báo");
-                builder.setMessage("Bạn có muốn xóa thể loại sách " + list.get(holder.getAdapterPosition()).getTenloai() + " hay không?");
+                builder.setMessage("Bạn có muốn xóa sách " + list.get(holder.getAdapterPosition()).getTensach() + " hay không?");
                 builder.setIcon(R.drawable.ic_warning);
                 builder.setPositiveButton("Vâng", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        int check = loaiSachDAO.xoaLoaiSach(list.get(holder.getAdapterPosition()).getMaloai());
-                        if (check == 0) {
-                            // Có sách thuộc loại sách này, không thể xóa.
-                            Toast.makeText(context, "Không thể xóa loại sách có sách liên quan", Toast.LENGTH_SHORT).show();
-                        } else if (check == -1) {
+                        int check = thuVienSachDAO.xoaSach(list.get(holder.getAdapterPosition()).getMasach());
+                        if (check == -1) {
                             // Xóa thất bại.
                             Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
                         } else {
@@ -93,10 +93,10 @@ public class LoaiSachAdapter extends RecyclerView.Adapter<LoaiSachAdapter.ViewHo
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView anhSach;
         private ImageButton btn_edit, btn_delete;
-        private TextView maLoai, tenSach, tenTacGia, tenLoaiSach;
+        private TextView maSach, tenSach, tenTacGia, giaBan, tenLoai;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,16 +104,17 @@ public class LoaiSachAdapter extends RecyclerView.Adapter<LoaiSachAdapter.ViewHo
             anhSach = itemView.findViewById(R.id.anhSach);
             btn_edit = itemView.findViewById(R.id.btn_edit);
             btn_delete = itemView.findViewById(R.id.btn_delete);
-            maLoai = itemView.findViewById(R.id.maLoai);
+            maSach = itemView.findViewById(R.id.maSach);
             tenSach = itemView.findViewById(R.id.tenSach);
             tenTacGia = itemView.findViewById(R.id.tenTacGia);
-            tenLoaiSach = itemView.findViewById(R.id.tenLoaiSach);
+            giaBan = itemView.findViewById(R.id.giaBan);
+            tenLoai = itemView.findViewById(R.id.tenLoai);
         }
     }
-    private void showDiaLogUpdate(LoaiSach loaiSach){
+    private void showDiaLogUpdate(Sach sach){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater layoutInflater = ((Activity)context).getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.the_loai_sach, null);
+        View view = layoutInflater.inflate(R.layout.sach, null);
         builder.setView(view);
 
         AlertDialog alertDialog = builder.create();
@@ -122,46 +123,62 @@ public class LoaiSachAdapter extends RecyclerView.Adapter<LoaiSachAdapter.ViewHo
         alertDialog.show();
 
         TextView tieuDe = view.findViewById(R.id.tieuDe);
-        EditText maLoai, tenLoaiSach;
-//        maLoai = view.findViewById(R.id.maLoai);
-        tenLoaiSach = view.findViewById(R.id.tenLoaiSach);
+        EditText tenSach, tenTacGia, giaBan, tenLoai;;
+        tenSach = view.findViewById(R.id.tenSach);
+        tenTacGia = view.findViewById(R.id.tenTacGia);
+        giaBan = view.findViewById(R.id.giaBan);
+        tenLoai = view.findViewById(R.id.tenLoai);
         Button btnLuu, btnHuy;
         btnLuu = view.findViewById(R.id.btnLuu);
         btnHuy = view.findViewById(R.id.btnHuy);
 
-        tieuDe.setText("Cập nhật Loại Sách");
+        tieuDe.setText("Cập nhật Sách");
         btnLuu.setText("Cập nhật");
-        tenLoaiSach.setText(loaiSach.getTenloai());
+
+        tenSach.setText(sach.getTensach());
+        tenTacGia.setText(sach.getTacgia());
+        giaBan.setText(String.valueOf(sach.getGiaban()));
+        tenLoai.setText(sach.getTenloai());
 
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String maLoaiStr = maLoai.getText().toString();
-                String tenloai = tenLoaiSach.getText().toString();
+                String tensach = tenSach.getText().toString();
+                String tentacgia = tenTacGia.getText().toString();
+                String giabanStr = giaBan.getText().toString();
+                String tenloai = tenLoai.getText().toString();
 
-                LoaiSach loaiSachUpdate = new LoaiSach(loaiSach.getMaloai(), tenloai);
-
-
-
-//                if (maLoaiStr.isEmpty()) {
-//                    Toast.makeText(context, "Bạn chưa nhập mã loại sách", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-
-//                int maloai = Integer.parseInt(maLoaiStr);
-
-                if (tenloai.equals("")){
-                    Toast.makeText(context, "Bạn chưa nhập tên loại sách", Toast.LENGTH_SHORT).show();
+                if (tensach.equals("")){
+                    Toast.makeText(context, "Bạn chưa nhập tên sách", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                boolean check = loaiSachDAO.suaLoaiSach(loaiSachUpdate);
-//                boolean check = loaiSachDAO.suaLoaiSach(maloai, tenloai);
+                if (tentacgia.equals("")){
+                    Toast.makeText(context, "Bạn chưa nhập tên tác giả", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (giabanStr.isEmpty()){
+                    Toast.makeText(context, "Bạn chưa nhập giá bán", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (tenloai.isEmpty()){
+                    Toast.makeText(context, "Bạn chưa nhập mã loại", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int giaban = Integer.parseInt(giabanStr);
+                Sach sachUpdate = new Sach(sach.getMasach(), tensach, tentacgia, giaban, sach.getMaloai(), tenloai);
+
+                boolean checkSach = thuVienSachDAO.checkSach(tenloai);
+                if (!checkSach){
+                    Toast.makeText(context, "Tên loại sách này không tồn tại", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                boolean check = thuVienSachDAO.suaSach(sachUpdate);
                 if (check){
-//                    Snackbar.make(recyclerView, "Thêm thành công", Snackbar.LENGTH_SHORT).show();
                     Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                     loadData();
                     alertDialog.dismiss();
-                }else{
+                } else {
                     Toast.makeText(context, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -173,9 +190,12 @@ public class LoaiSachAdapter extends RecyclerView.Adapter<LoaiSachAdapter.ViewHo
             }
         });
     }
+    private void showDiaLogDelete(){
+
+    }
     private void loadData(){
         list.clear();
-        list = loaiSachDAO.getDSLoaiSach();
+        list = thuVienSachDAO.getDSSach();
         notifyDataSetChanged();
     }
 }
